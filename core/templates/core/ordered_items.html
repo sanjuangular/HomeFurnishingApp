@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ordered Items - Order {{ order.id }}</title>
+</head>
+<body>
+    <h1>Ordered Items - Order {{ order.id }}</h1>
+    <ul>
+        {% for ordered_item in ordered_cart_items %}
+        <li>
+            Item: {{ ordered_item.item.name }}<br>
+            Quantity: {{ ordered_item.quantity }}<br>
+            Price per unit: ${{ ordered_item.item.price }}<br>
+            <!-- Add more item details here -->
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'orders' %}">Back to Orders</a>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>{{ item.name }}</title>
+    <link rel="stylesheet" href="{% static 'core/item_details.css' %}">
+    <style>
+        /* Add CSS styling for buttons, layout, and add to cart button positioning here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .item-details {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            width: 80%;
+            margin: 0 auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .details img {
+            width: 30%; /* Reduced image width */
+            margin-right: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .details p {
+            width: 60%; /* Increased width for description */
+            text-align: left;
+        }
+
+        .add-to-cart {
+            margin-top: 20px;
+            display: block;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .add-to-cart:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style buttons as links */
+        .button {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            border-radius: 3px;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ item.name }} Details</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}" class="button">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}" class="button">Logout</a></li>
+                <li><a href="{% url 'orders' %}" class="button">Orders</a></li>
+                <li><a href="{% url 'checkout' %}" class="button">Cart</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}" class="button">Login</a></li>
+                <li><a href="{% url 'register' %}" class="button">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    
+    <section class="item-details">
+        <h2>{{ item.name }} Details</h2>
+        <div class="details">
+            <img src="{{ item.image.url }}" alt="{{ item.name }}">
+            <p>Description: {{ item.description }}</p>
+            <p>Color: {{ item.color }}</p>
+            <p>Sizes: {{ item.sizes }}</p>
+            <p>Rate for 3 months: ${{ item.rate_3_months }}</p>
+        </div>
+        
+        <form method="post" action="{% url 'add_to_cart' item.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="add-to-cart">Add to Cart</button>
+        </form>
+    </section>
+</body>
+</html>

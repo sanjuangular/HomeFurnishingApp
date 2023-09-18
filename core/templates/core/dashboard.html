@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'core/dashboard.css' %}">
+    <style>
+        /* Add CSS styling for category images here */
+        .category-image {
+            width: 140px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RENTFURLAX</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a href="{% url 'orders' %}">Orders</a></li>
+            <li><a href="{% url 'checkout' %}">Cart</a></li>
+        </ul>
+    </nav>
+    
+    <section class="categories">
+        <h2>Categories</h2>
+        <div class="category-container">
+            {% for category in categories %}
+                <a class="category-link" href="{% url 'category_items' category.id %}">
+                    <img src="{{ category.image.url }}" alt="{{ category.name }}" class="category-image">
+                    <p>{{ category.name }}</p>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>

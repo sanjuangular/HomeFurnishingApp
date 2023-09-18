@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category.name }} Items</title>
+    <style>
+        /* Add CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul.item-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0;
+        }
+
+        ul.item-list li {
+            width: calc(33.33% - 10px); /* Adjust the width as needed for the desired number of items per row */
+            margin: 0 5px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        ul.item-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        ul.item-list li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        ul.item-list li a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ category.name }} Items</h1>
+    
+    <ul class="item-list">
+        {% for item in items %}
+        <li>
+            <img src="{{ item.image.url }}" alt="{{ item.name }}" width="150">
+            <h3><a href="{% url 'item_details' item.id %}">{{ item.name }}</a></h3>
+            <p>Price: ${{ item.price }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{% url 'home' %}" class="back-link">Back to Home</a>
+</body>
+</html>
