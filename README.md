@@ -1,0 +1,7 @@
+# HomeFurnishingApp![Registration Page](https://github.com/sanjuangular/HomeFurnishingApp/assets/47827347/eff92c8d-45ba-42b2-8350-0cf03d36de32)
+![OrderPage](https://github.com/sanjuangular/HomeFurnishingApp/assets/47827347/cb7fe0a3-8944-42ae-823b-bea7a487b80f)
+![LoginPage](https://github.com/sanjuangular/HomeFurnishingApp/assets/47827347/14133390-b7e0-4293-ad48-5ca6462c9fc2)
+![Item Details Page](https://github.com/sanjuangular/HomeFurnishingApp/assets/47827347/45aaee16-6050-4b20-a9bc-701ee25df245)
+![Dashboard](https://github.com/sanjuangular/HomeFurnishingApp/assets/47827347/a7d09ac0-b90f-484a-8b4f-47354e2eb4e3)
+![Checkout Page](https://github.com/sanjuangular/HomeFurnishingApp/assets/47827347/ae69d834-17d0-4215-ab52-ba8f0bf2f5e3)
+![Category Page](https://github.com/sanjuangular/HomeFurnishingApp/assets/47827347/f2c06b8c-0489-45b0-962e-d597f11a3844)
